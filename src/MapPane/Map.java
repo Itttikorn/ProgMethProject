@@ -1,7 +1,7 @@
 package MapPane;
 
 import Util.Block;
-import Util.Playerview;
+import Util.PlayerView;
 import Util.Position;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -13,19 +13,19 @@ import java.util.Random;
 
 public class Map extends GridPane {
     private ArrayList<Cell> allCells;
-    private Position currentlyposition;
-    private Position mapsize;
-    private Playerview currentlyface;
+    private Position currentPosition;
+    private Position mapSize;
+    private PlayerView currentFacing;
 
     public Map() {
         super();
 
         //////////////// set value ////////////////
         this.setAllCells(new ArrayList<Cell>());
-        this.setCurrentlyface(Playerview.Right);
+        this.setCurrentFacing(PlayerView.RIGHT);
 
-        this.setCurrentlyposition(new Position(10, 5));
-        this.setMapsize(new Position(21, 11));
+        this.setCurrentPosition(new Position(10, 5));
+        this.setMapSize(new Position(21, 11));
 
         //////////////// set alignment ////////////////
         this.setPadding(new Insets(8));
@@ -43,60 +43,60 @@ public class Map extends GridPane {
                     this.allCells.add(new Cell(Block.randomBlock()));
                 } else {
                     //////////////// draw base hero ////////////////
-                    this.allCells.add(new Cell(Block.Grass));
-                    this.getAllCells().get((i * 11) + j).drawinside(Playerview.Right);
+                    this.allCells.add(new Cell(Block.GRASS));
+                    this.getAllCells().get((i * 11) + j).drawInside(PlayerView.RIGHT);
                 }
                 this.add(allCells.get((i * 11) + j), i, j);
             }
         }
     }
 
-    public Playerview getCurrentlyface() {
-        return currentlyface;
+    public PlayerView getCurrentFacing() {
+        return currentFacing;
     }
 
-    public void setCurrentlyface(Playerview currentlyface) {
-        this.currentlyface = currentlyface;
+    public void setCurrentFacing(PlayerView currentFacing) {
+        this.currentFacing = currentFacing;
     }
 
-    public int getcurrentposition() {
-        return this.getCurrentlyposition().getX() * this.getMapsize().getY() + this.getCurrentlyposition().getY();
+    public int getHeroPosition() {
+        return this.getCurrentPosition().getX() * this.getMapSize().getY() + this.getCurrentPosition().getY();
     }
 
-    public void mapextends(int num) {
+    public void mapExtends(int num) {
         ////////////////       extend map      ////////////////
-        //////////////// case 0 = extend right ////////////////
-        //////////////// case 1 = extend left  ////////////////
-        //////////////// case 2 = extend up    ////////////////
-        //////////////// case 3 = extend down  ////////////////
+        //////////////// case 0 = extend RIGHT ////////////////
+        //////////////// case 1 = extend LEFT  ////////////////
+        //////////////// case 2 = extend UP    ////////////////
+        //////////////// case 3 = extend DOWN  ////////////////
         switch (num) {
             case 0:
 //                System.out.println(0);
-                for (int loop = 0; loop < this.getMapsize().getY(); loop++) {
+                for (int loop = 0; loop < this.getMapSize().getY(); loop++) {
                     this.getAllCells().add(new Cell(Block.randomBlock()));
                 }
-                this.getMapsize().setX(this.getMapsize().getX() + 1);
+                this.getMapSize().setX(this.getMapSize().getX() + 1);
                 break;
             case 1:
 //                System.out.println(1);
-                for (int loop = 0; loop < this.getMapsize().getY(); loop++) {
+                for (int loop = 0; loop < this.getMapSize().getY(); loop++) {
                     this.getAllCells().add(0, new Cell(Block.randomBlock()));
                 }
-                this.getMapsize().setX(this.getMapsize().getX() + 1);
+                this.getMapSize().setX(this.getMapSize().getX() + 1);
                 break;
             case 2:
 //                System.out.println(2);
-                for (int loop = 0; loop < this.getMapsize().getX(); loop++) {
-                    this.getAllCells().add(loop * this.getMapsize().getY() + loop, new Cell(Block.randomBlock()));
+                for (int loop = 0; loop < this.getMapSize().getX(); loop++) {
+                    this.getAllCells().add(loop * this.getMapSize().getY() + loop, new Cell(Block.randomBlock()));
                 }
-                this.getMapsize().setY(this.getMapsize().getY() + 1);
+                this.getMapSize().setY(this.getMapSize().getY() + 1);
                 break;
             case 3:
 //                System.out.println("3");
-                for (int loop = 0; loop < this.getMapsize().getX(); loop++) {
-                    this.getAllCells().add((loop + 1) * this.getMapsize().getY() + loop, new Cell(Block.randomBlock()));
+                for (int loop = 0; loop < this.getMapSize().getX(); loop++) {
+                    this.getAllCells().add((loop + 1) * this.getMapSize().getY() + loop, new Cell(Block.randomBlock()));
                 }
-                this.getMapsize().setY(this.getMapsize().getY() + 1);
+                this.getMapSize().setY(this.getMapSize().getY() + 1);
                 break;
         }
     }
@@ -109,19 +109,19 @@ public class Map extends GridPane {
         this.allCells = allCells;
     }
 
-    public Position getCurrentlyposition() {
-        return currentlyposition;
+    public Position getCurrentPosition() {
+        return currentPosition;
     }
 
-    public void setCurrentlyposition(Position currentlyposition) {
-        this.currentlyposition = currentlyposition;
+    public void setCurrentPosition(Position currentPosition) {
+        this.currentPosition = currentPosition;
     }
 
-    public Position getMapsize() {
-        return mapsize;
+    public Position getMapSize() {
+        return mapSize;
     }
 
-    public void setMapsize(Position mapsize) {
-        this.mapsize = mapsize;
+    public void setMapSize(Position mapSize) {
+        this.mapSize = mapSize;
     }
 }

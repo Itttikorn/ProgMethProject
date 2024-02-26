@@ -1,9 +1,6 @@
-import Controller.Contro_move;
-import MapPane.Cell;
+import Controller.MoveControl;
 import MapPane.Map;
 import MapPane.SkillPane;
-import Util.Block;
-import Util.Playerview;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
@@ -15,8 +12,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-
-import java.awt.*;
 
 public class Main extends Application {
     public static void main(String[] args) {
@@ -37,7 +32,7 @@ public class Main extends Application {
 //        root.setPrefHeight(400);
 //        root.setPrefWidth(800);
         Scene scene = new Scene(root);
-        Contro_move controMove = new Contro_move(map);
+        MoveControl controMove = new MoveControl(map);
         ////////////////set key for move////////////////
         scene.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.A || e.getCode() == KeyCode.LEFT) {

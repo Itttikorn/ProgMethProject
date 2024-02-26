@@ -1,7 +1,7 @@
 package MapPane;
 
 import Util.Block;
-import Util.Playerview;
+import Util.PlayerView;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
@@ -24,7 +24,7 @@ public class Cell extends StackPane {
         this.setMinHeight(50);
         this.setMinWidth(50);
         this.setBlock(block);
-        this.setTransparent(block.equals(Block.Water));
+        this.setTransparent(block.equals(Block.WATER));
         this.setAlignment(Pos.CENTER);
 
         //////////////// set background and player ////////////////
@@ -44,15 +44,15 @@ public class Cell extends StackPane {
         this.setBackground(new Background(bgFillA, bgImgA));
     }
 
-    public void drawinside(Playerview playerview) {
+    public void drawInside(PlayerView playerView) {
         //////////////// draw player ////////////////
-        Image image = new Image(ClassLoader.getSystemResource(playerview.toString() + "Hero.png").toString());
+        Image image = new Image(ClassLoader.getSystemResource(playerView.toString() + "Hero.png").toString());
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(90);
         imageView.setFitWidth(90);
         this.getChildren().add(imageView);
     }
-    public void takedamage(int damage) {
+    public void takeDamage(int damage) {
         return ;
     }
 

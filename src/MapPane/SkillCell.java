@@ -15,15 +15,15 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 public class SkillCell extends StackPane {
-    private int delaskill;
+    private int skillDelay;
     private boolean delaying;
     private Label cooldown;
 
-    public SkillCell(String name, int delaskill) {
+    public SkillCell(String name, int skillDelay) {
         super();
 
         //////////////// set value ////////////////
-        this.setDelaskill(delaskill);
+        this.setSkillDelay(skillDelay);
 
         //////////////// set alignment ////////////////
         this.setPrefHeight(50);
@@ -39,7 +39,7 @@ public class SkillCell extends StackPane {
         this.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
         this.getChildren().add(imageView);
 
-        Label label = new Label(String.valueOf(delaskill));
+        Label label = new Label(String.valueOf(skillDelay));
         label.setVisible(false);
         label.setFont(Font.font(20));
         this.setCooldown(label);
@@ -53,11 +53,11 @@ public class SkillCell extends StackPane {
 
         this.setDelaying(true);
         visible(true);
-        int delaskill = this.getDelaskill();
-        for (; 0 < delaskill; delaskill--) {
-            int finalDelaskill = delaskill;
+        int skillDelay = this.getSkillDelay();
+        for (; 0 < skillDelay; skillDelay--) {
+            int finalskillDelay = skillDelay;
             Platform.runLater(() -> {
-                this.setCooldownTime(finalDelaskill);
+                this.setCooldownTime(finalskillDelay);
             });
             Thread.sleep(1000);
         }
@@ -76,12 +76,12 @@ public class SkillCell extends StackPane {
         this.getCooldown().setText(String.valueOf(time));
     }
 
-    public int getDelaskill() {
-        return delaskill;
+    public int getSkillDelay() {
+        return skillDelay;
     }
 
-    public void setDelaskill(int delaskill) {
-        this.delaskill = delaskill;
+    public void setSkillDelay(int skillDelay) {
+        this.skillDelay = skillDelay;
     }
 
     public boolean isDelaying() {

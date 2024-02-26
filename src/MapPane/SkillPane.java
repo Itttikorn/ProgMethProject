@@ -32,7 +32,7 @@ public class SkillPane extends HBox {
     }
 
 
-    public void burskill(int skill) {
+    public void useSkill(int skill) {
         //////////////// use skill ////////////////
         Thread thread = new Thread(() -> {
             try {

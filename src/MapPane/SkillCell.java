@@ -55,9 +55,9 @@ public class SkillCell extends StackPane {
         visible(true);
         int skillDelay = this.getSkillDelay();
         for (; 0 < skillDelay; skillDelay--) {
-            int finalskillDelay = skillDelay;
+            int finalSkillDelay = skillDelay;
             Platform.runLater(() -> {
-                this.setCooldownTime(finalskillDelay);
+                this.setCooldownTime(finalSkillDelay);
             });
             Thread.sleep(1000);
         }
@@ -65,11 +65,11 @@ public class SkillCell extends StackPane {
         this.setDelaying(false);
     }
 
-    public void visible(boolean b) {
-        if (b) this.getChildren().get(0).setEffect(new GaussianBlur(10));
+    public void visible(boolean isVisible) {
+        if (isVisible) this.getChildren().get(0).setEffect(new GaussianBlur(10));
         else this.getChildren().get(0).setEffect(null);
 
-        this.getCooldown().setVisible(b);
+        this.getCooldown().setVisible(isVisible);
     }
 
     public void setCooldownTime(int time) {

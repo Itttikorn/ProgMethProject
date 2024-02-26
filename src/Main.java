@@ -32,28 +32,28 @@ public class Main extends Application {
 //        root.setPrefHeight(400);
 //        root.setPrefWidth(800);
         Scene scene = new Scene(root);
-        MoveControl controMove = new MoveControl(map);
+        MoveControl moveControl = new MoveControl(map);
         ////////////////set key for move////////////////
         scene.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.A || e.getCode() == KeyCode.LEFT) {
-                controMove.turnleft();
+                moveControl.turnLeft();
             } else if (e.getCode() == KeyCode.D || e.getCode() == KeyCode.RIGHT) {
-                controMove.turnright();
+                moveControl.turnRight();
             } else if (e.getCode() == KeyCode.W || e.getCode() == KeyCode.UP) {
-                controMove.turnup();
+                moveControl.turnUp();
             } else if (e.getCode() == KeyCode.S || e.getCode() == KeyCode.DOWN) {
-                controMove.turndown();
+                moveControl.turnDown();
             } else if (e.getCode() == KeyCode.DIGIT1) {
                 Thread thread = new Thread(() -> {
                     Platform.runLater(() -> {
-                        skillPane.burskill(0);
+                        skillPane.useSkill(0);
                     });
                 });
                 thread.start();
             } else if (e.getCode() == KeyCode.DIGIT2) {
                 Thread thread = new Thread(() -> {
                     Platform.runLater(() -> {
-                        skillPane.burskill(1);
+                        skillPane.useSkill(1);
                     });
                 });
                 thread.start();

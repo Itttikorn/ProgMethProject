@@ -15,7 +15,7 @@ public class MoveControl {
         //////////////// Check can it walk ////////////////
         int position = map.getHeroPosition();
         if (map.getAllCells().get(position + map.getMapSize().getY()).isTransparent()) {
-            changeface(PlayerView.RIGHT);
+            changeFace(PlayerView.RIGHT);
             return;
         }
 
@@ -39,19 +39,19 @@ public class MoveControl {
 
         //////////////// Check can it walk ////////////////
         if (map.getAllCells().get(map.getHeroPosition() - map.getMapSize().getY()).isTransparent()) {
-            changeface(PlayerView.LEFT);
+            changeFace(PlayerView.LEFT);
             return;
         }
 
         ////////////////Check does it hit Map boarder////////////////
-        boolean exten = true;
+        boolean extend = true;
         if (map.getCurrentPosition().getX() - 10 == 0) {
             map.mapExtends(1);
-            exten = false;
+            extend = false;
         }
 
         //////////////// Reposition hero ////////////////
-        if (exten) map.getCurrentPosition().setX(map.getCurrentPosition().getX() - 1);
+        if (extend) map.getCurrentPosition().setX(map.getCurrentPosition().getX() - 1);
         int position = map.getHeroPosition();
         map.getAllCells().get(position + map.getMapSize().getY()).clear();
         map.setCurrentFacing(PlayerView.LEFT);
@@ -64,11 +64,11 @@ public class MoveControl {
         }
     }
 
-    public void turnup() {
+    public void turnUp() {
 
         //////////////// Check can it walk ////////////////
         if (map.getAllCells().get(map.getHeroPosition() - 1).isTransparent()) {
-            changeface(PlayerView.UP);
+            changeFace(PlayerView.UP);
             return;
         }
 
@@ -93,11 +93,11 @@ public class MoveControl {
         }
     }
 
-    public void turndown() {
+    public void turnDown() {
 
         //////////////// Check can it walk ////////////////
         if (map.getAllCells().get(map.getHeroPosition() + 1).isTransparent()) {
-            changeface(PlayerView.DOWN);
+            changeFace(PlayerView.DOWN);
             return;
         }
 
@@ -120,7 +120,7 @@ public class MoveControl {
         map.getCurrentPosition().setY(map.getCurrentPosition().getY() + 1);
     }
 
-    public void changeface(PlayerView playerview) {
+    public void changeFace(PlayerView playerview) {
         int position = map.getHeroPosition();
         map.getAllCells().get(position).clear();
         map.setCurrentFacing(playerview);

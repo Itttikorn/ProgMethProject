@@ -1,4 +1,4 @@
-package logic;
+package controllers;
 
 import pane.tiles.Tile;
 

@@ -79,5 +79,9 @@ public class Tile extends VBox {
 
     public void updateTileRender(){
         //TODO: do something
+        //Updatable values that need tiles to be re-render
+        //1. Player in tile
+        //2. Level of tile
+        //3. Owner of tile
     }
 }
